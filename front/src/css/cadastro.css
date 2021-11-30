@@ -1,0 +1,148 @@
+
+.modal{
+    width: 100vw;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 4;
+
+    display: none;
+    background-color: #14262b86;
+}
+
+.modal-content{
+    width: 700px;
+    height: 650px;
+
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+}
+
+.mostrar{
+    display: flex;
+}
+
+.titulinho{
+    font-size: 22px;
+}
+
+.frase{
+    max-width: 600px;
+}
+
+.inputs-cadastro input{
+    width: 400px;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    background-color: white;
+    font-size: 16px;
+    padding-left: 20px;
+}
+
+.select-cadastro{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: white;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.input-select label{
+    margin-bottom: 4px
+}
+
+.inputs-cadastro label{
+    margin-bottom: 4px;
+}
+
+.btn-cadastro{
+    width: 250px;
+    height: 60px;
+    border-radius: 30px;
+    outline: none;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#cadastrinho{
+    font-size: 30px;
+    color: #2ECC71;
+    padding-right: 20px;
+}
+
+.checkbox{
+    margin-top: 35px;
+    margin-left: 30px;
+}
+
+.checkbox input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-container{
+    position: relative;
+    height: 40px;
+    cursor: pointer;
+    padding-left: 40px;
+    padding-top: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkmark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 32px;
+    width: 32px;
+    background-color: #eee;
+    border-radius: 10px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #5DBCD9;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #62E395;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 12px;
+    top: 8px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

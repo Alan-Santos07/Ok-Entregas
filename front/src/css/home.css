@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.content{
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    z-index: 1;
+    height: 100vh;
+    width: 93.5vw;
+    background: white;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+
+    border-radius: 30px 0 0 30px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.glass-home{
+    margin-left: 50px;
+    margin-top: 35px;
+}
+
+.glass-home h1{
+    font-size: 24px;
+}
+
+.inputs-home{
+    margin-top: 40px;
+}
+
+.inputs-home input{
+    width: 395px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #F3FEF5;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.btn-pesquisar{
+    width: 200px;
+    height: 40px;
+    margin-left: 20px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+    font-size: 16px;
+    color: #5D786E;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+#lupa{
+    margin-right: 10px;
+    color: #5D786E;
+}
+
+.inputs-home label{
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.resultado{
+    width: 60vw;
+    height: 60vh;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+    margin-top: 40px;
+    border-radius: 30px;
+    backdrop-filter: blur(60px);
+}
+
+.resultado-content{
+    width: 100%;
+    height: 100%;
+    padding-left: 25px;
+}
+
+.inputs-resultado label{
+    width: 150px;
+}
+
+.inputs-resultado input{
+    width: 420px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #F3FEF5;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.historico button{
+    width: 300px;
+    height: 60px;
+    border-radius: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+    font-size: 16px;
+    color: #5D786E;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.copy button{
+    width: 160px;
+    height: 40px;
+    margin-left: 30px;
+    border-radius: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+    font-size: 12px;
+    color: #5D786E;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.call button{
+    width: 120px;
+    height: 40px;
+    margin-left: 30px;
+    border-radius: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+    font-size: 12px;
+    color: #5D786E;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+#copy{
+    margin-left: 10px;
+    color: #313634;
+}
+
+#ligar{
+    margin-left: 10px;
+    color: #DD4DA5;
+}
+
+#hist{
+    margin-right: 20px;
+    font-size: 28px;
+    color: #F9BD72;
+}

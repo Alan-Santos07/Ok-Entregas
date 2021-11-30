@@ -1,0 +1,77 @@
+.email-bar{
+    height: 100vh;
+    width: 26vw;
+
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 0%;
+    top: 0%;
+
+    z-index: 3;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    border-radius: 30px 0 0 30px;
+}
+
+.email-content{
+    height: 87vh;
+}
+
+.email-content h1{
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.email-form{
+    height: 100%;
+}
+
+.inputs-email input{
+    width: 300px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #F3FEF5;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+#input-email{
+    height: 250px;
+    width: 300px;
+    border-radius: 30px;
+    background-color: #F3FEF5;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    font-size: 14px;
+    resize: none;
+}
+
+.inputs-email label{
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.btn-email{
+    width: 300px;
+    height: 60px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+#email{
+    margin-right: 10px;
+    color: #DD4DA5;
+    font-size: 24px;
+}
