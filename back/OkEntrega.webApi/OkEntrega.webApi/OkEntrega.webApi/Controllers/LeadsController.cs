@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OkEntrega.webApi.Domains;
 using OkEntrega.webApi.Interfaces;
 using OkEntrega.webApi.Repositorios;
 using System;
@@ -32,6 +33,51 @@ namespace OkEntrega.webApi.Controllers
             {
 
                 return BadRequest(erro);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Post(Lead novoLead)
+        {
+            try
+            {
+                leadRepository.Cadastrar(novoLead);
+                return StatusCode(201);
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                leadRepository.Deletar(id);
+
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Lead leadAtualizado)
+        {
+            try
+            {
+                leadRepository.Atualizar(id, leadAtualizado);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+
             }
         }
     }

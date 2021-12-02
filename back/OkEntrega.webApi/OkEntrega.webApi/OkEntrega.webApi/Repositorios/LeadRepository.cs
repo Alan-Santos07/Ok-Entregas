@@ -12,47 +12,87 @@ namespace OkEntrega.webApi.Repositorios
     {
         OkEntregasContext ctx = new OkEntregasContext();
 
-<<<<<<< HEAD
         public void Atualizar(int id, Lead leadAtualizado)
-=======
-        public void Atualizar(int id, UsuarioLead leadAtualizado)
->>>>>>> front-end
+
         {
-            throw new NotImplementedException();
+            Lead leadBuscado = ctx.Leads.Find(id);
+
+            if (leadAtualizado.Nome != null)
+            {
+                leadBuscado.Nome = leadAtualizado.Nome;
+            }
+
+            if (leadAtualizado.StatusLead != null)
+            {
+                leadBuscado.StatusLead = leadAtualizado.StatusLead;
+            }
+            if (leadAtualizado.Email != null)
+            {
+                leadBuscado.Email = leadAtualizado.Email;
+            }
+            if (leadAtualizado.Cargo != null)
+            {
+                leadBuscado.Cargo = leadAtualizado.Cargo;
+            }
+            if (leadAtualizado.Score != null)
+            {
+                leadBuscado.Score = leadAtualizado.Score;
+            }
+            if (leadAtualizado.Telefone != null)
+            {
+                leadBuscado.Telefone = leadAtualizado.Telefone;
+            }
+            if (leadAtualizado.Necessidades != null)
+            {
+                leadBuscado.Necessidades = leadAtualizado.Necessidades;
+            }
+            if (leadAtualizado.IdEmpresa != null)
+            {
+                leadBuscado.IdEmpresa = leadAtualizado.IdEmpresa;
+            }
+
+            ctx.Leads.Update(leadBuscado);
+
+            ctx.SaveChanges();
+
         }
 
-<<<<<<< HEAD
+
         public Lead BuscarPorId(int id)
-=======
-        public UsuarioLead BuscarPorId(int id)
->>>>>>> front-end
+
         {
-            throw new NotImplementedException();
+            return ctx.Leads
+            .Select(u => new Lead()
+            {
+                IdLeads = u.IdLeads,
+                Nome = u.Nome,
+                Email = u.Email
+
+            })
+            .FirstOrDefault(u => u.IdLeads == id);
         }
 
-<<<<<<< HEAD
+
         public void Cadastrar(Lead novoLead)
-=======
-        public void Cadastrar(UsuarioLead novoLead)
->>>>>>> front-end
         {
-            throw new NotImplementedException();
+            ctx.Leads.Add(novoLead);
+
+            ctx.SaveChanges();
         }
 
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            ctx.Leads.Remove(BuscarPorId(id));
+
+            ctx.SaveChanges();
         }
 
-<<<<<<< HEAD
         public List<Lead> Listar()
         {
-            throw new NotImplementedException();
-=======
-        public List<UsuarioLead> Listar()
-        {
-            return ctx.UsuarioLeads.ToList();
->>>>>>> front-end
+
+            return ctx.Leads
+            .ToList();
+
         }
     }
 }

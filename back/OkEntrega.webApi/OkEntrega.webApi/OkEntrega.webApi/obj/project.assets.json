@@ -7969,19 +7969,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\44711461817\\Desktop\\Senai\\G10-Senai3S-STL\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
+      "projectUniqueName": "C:\\Users\\44711461817\\Desktop\\Senai\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
       "projectName": "OkEntrega.webApi",
-      "projectPath": "C:\\Users\\44711461817\\Desktop\\Senai\\G10-Senai3S-STL\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
+      "projectPath": "C:\\Users\\44711461817\\Desktop\\Senai\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
       "packagesPath": "C:\\Users\\44711461817\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\44711461817\\Desktop\\Senai\\G10-Senai3S-STL\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\45546332840\\Desktop\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
-      "projectName": "OkEntrega.webApi",
-      "projectPath": "C:\\Users\\45546332840\\Desktop\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
-      "packagesPath": "C:\\Users\\45546332840\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\45546332840\\Desktop\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\obj\\",
->>>>>>> front-end
+      "outputPath": "C:\\Users\\44711461817\\Desktop\\Senai\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\44711461817\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8084,5 +8076,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema ao ler o arquivo de cache C:\\Users\\44711461817\\Desktop\\Senai\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

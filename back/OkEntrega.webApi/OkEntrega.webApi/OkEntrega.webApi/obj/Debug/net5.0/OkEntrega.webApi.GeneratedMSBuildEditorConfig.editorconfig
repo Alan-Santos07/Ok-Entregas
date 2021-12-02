@@ -7,8 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = OkEntrega.webApi
-<<<<<<< HEAD
-build_property.ProjectDir = C:\Users\44711461817\Desktop\Senai\G10-Senai3S-STL\OkEntrega.webApi\OkEntrega.webApi\OkEntrega.webApi\
-=======
-build_property.ProjectDir = C:\Users\45546332840\Desktop\OkEntrega.webApi\OkEntrega.webApi\OkEntrega.webApi\
->>>>>>> front-end
+build_property.ProjectDir = C:\Users\44711461817\Desktop\Senai\Ok-Entregas\Ok-Entregas\back\OkEntrega.webApi\OkEntrega.webApi\OkEntrega.webApi\
