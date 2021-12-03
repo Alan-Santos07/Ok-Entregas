@@ -18,6 +18,7 @@ namespace OkEntrega.webApi.Contexts
         {
         }
 
+        public virtual DbSet<Contato> Contatos { get; set; }
         public virtual DbSet<Empresa> Empresas { get; set; }
         public virtual DbSet<Lead> Leads { get; set; }
         public virtual DbSet<Reuniao> Reuniaos { get; set; }
@@ -29,14 +30,45 @@ namespace OkEntrega.webApi.Contexts
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                // optionsBuilder.UseSqlServer("Data Source=DESKTOP-M7IPJ7L\\SQLEXPRESS;initial catalog= OKEntregas; user Id=sa; pwd=Senai@132");
-                optionsBuilder.UseSqlServer("Data Source=database-1.cmudjo7ttpbr.us-east-1.rds.amazonaws.com;initial catalog= OKEntregas; user Id=Admin; pwd=Senai132");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-M7IPJ7L\\SQLEXPRESS;initial catalog= OKEntregas;user Id=sa; pwd=Senai@132");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
+
+            modelBuilder.Entity<Contato>(entity =>
+            {
+                entity.HasKey(e => e.IdContato)
+                    .HasName("PK__Contato__2AC4F064C5E12898");
+
+                entity.ToTable("Contato");
+
+                entity.Property(e => e.DataCriacao).HasColumnType("datetime");
+
+                entity.Property(e => e.Descricao)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Titulo)
+                    .IsRequired()
+                    .HasMaxLength(190)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.IdEmpresaNavigation)
+                    .WithMany(p => p.Contatos)
+                    .HasForeignKey(d => d.IdEmpresa)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Contato__IdEmpre__49C3F6B7");
+
+                entity.HasOne(d => d.IdLeadsNavigation)
+                    .WithMany(p => p.Contatos)
+                    .HasForeignKey(d => d.IdLeads)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Contato__IdLeads__4AB81AF0");
+            });
 
             modelBuilder.Entity<Empresa>(entity =>
             {

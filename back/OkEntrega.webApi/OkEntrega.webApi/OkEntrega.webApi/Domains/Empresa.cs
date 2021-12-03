@@ -9,6 +9,7 @@ namespace OkEntrega.webApi.Domains
     {
         public Empresa()
         {
+            Contatos = new HashSet<Contato>();
             Leads = new HashSet<Lead>();
         }
 
@@ -21,6 +22,7 @@ namespace OkEntrega.webApi.Domains
         public string Cnpj { get; set; }
         public string SegmentoDeMercado { get; set; }
 
+        public virtual ICollection<Contato> Contatos { get; set; }
         public virtual ICollection<Lead> Leads { get; set; }
     }
 }

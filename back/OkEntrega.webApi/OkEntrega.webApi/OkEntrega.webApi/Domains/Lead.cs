@@ -9,6 +9,7 @@ namespace OkEntrega.webApi.Domains
     {
         public Lead()
         {
+            Contatos = new HashSet<Contato>();
             Reuniaos = new HashSet<Reuniao>();
         }
 
@@ -23,6 +24,7 @@ namespace OkEntrega.webApi.Domains
         public int IdEmpresa { get; set; }
 
         public virtual Empresa IdEmpresaNavigation { get; set; }
+        public virtual ICollection<Contato> Contatos { get; set; }
         public virtual ICollection<Reuniao> Reuniaos { get; set; }
     }
 }
