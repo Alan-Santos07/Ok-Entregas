@@ -1,28 +1,19 @@
 USE OKEntregas
 
-SELECT IdUsuario,  Nome, Sobrenome, Email, Senha, TipoUsuario,VerificacaoEmail
-FROM   Usuarios;
+SELECT IdUsuario,  Nome, Sobrenome, Email, Senha, TipoUsuario,VerificacaoEmail 
+INNER JOIN Tipo
+FROM   Usuarios; 
+/* Arrumar tabela de usuário */
 
+SELECT * FROM TipoUsuario
+ 
 SELECT IdEmpresa,  NomeEmpresa, NumeroDeFuncionarios, NumeroDeTelefone, EmailEmpresa, NomeFantasia, Cnpj, SegmentoDeMercado
 FROM   Empresa;
 
-SELECT IdUsuarioLeads, Email, statusLead, Cargo, Nome
-FROM   UsuarioLeads;
+SELECT IdLeads, statusLead, Nome, Email, Cargo, Score, Telefone, Necessidades, NomeEmpresa, NumeroDeFuncionarios, NumeroDeTelefone, EmailEmpresa, NomeFantasia, Cnpj, SegmentoDeMercado FROM Leads INNER JOIN Empresa
+ON Empresa.IdEmpresa = Leads.IdEmpresa;
 
-SELECT IdLeads,  Score, Necessidades,Telefone, Email, statusLead, Cargo , Nome,NomeEmpresa,NumeroDeFuncionarios, NumeroDeTelefone, EmailEmpresa, NomeFantasia,  Cnpj, SegmentoDeMercado
-FROM   Leads
-INNER JOIN UsuarioLeads ON UsuarioLeads.IdUsuarioLeads = Leads.IdUsuarioLeads
-INNER JOIN Empresa ON  Empresa.IdEmpresa = Leads.IdEmpresa
-
-
-SELECT IdReuniao,  DataInicio, DataTermino, ATA, Sobrenome, Email, Senha, TipoUsuario, Nome, Score, Necessidades, IdUsuarioLeads, IdEmpresa
-FROM   Reuniao
-INNER JOIN  Usuarios ON Reuniao.IdUsuario = Usuarios.IdUsuario
-INNER JOIN  Leads ON  Leads.IdLeads =  Reuniao.IdLeads
-
-
-
-
-SELECT * FROM TipoUsuario
-
+SELECT IdContato, Titulo, Descricao, DataCriacao, Favoritar, NomeEmpresa, Nome,Cargo FROM Contato 
+INNER JOIN Empresa ON Contato.IdEmpresa = Empresa.IdEmpresa
+INNER JOIN Leads ON Contato.IdLeads = Leads.IdLeads
 
