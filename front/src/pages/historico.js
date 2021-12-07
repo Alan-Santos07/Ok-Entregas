@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
 import '../css/base-style.css'
 import '../css/historico.css'
@@ -10,10 +10,42 @@ export default class Historico extends Component{
     constructor(props) {
         super(props);
         this.state = {
-
+            listaContatos: [],
+            idContatoSelecionado : 0,
         }
     }
 
+    buscaContatos = () => {
+        axios("http://localhost:5000/api/Contatos")
+        .then(resposta => {
+            if (resposta.status === 200) {
+                this.setState({ listaContatos: resposta.data})
+
+            }
+            console.log(this.state.listaContatos)
+        })
+        .catch(erro => console.log(erro));
+    }
+
+    excluirContato = async (contato) => {
+        this.setState({
+            idContatoSelecionado : contato.idContato
+        })
+
+    await axios.delete('http://localhost:5000/api/contatos/'+this.state.idContatoSelecionado)
+
+    .then(resposta =>{
+        if (resposta.status === 204) {
+            console.log("foi")
+        }
+    })
+    .catch(erro => console.log(erro))
+
+    .then(this.buscaContatos)
+    }
+componentDidMount(){
+    this.buscaContatos();
+}
     render() {
         return (
             <main>
@@ -47,72 +79,48 @@ export default class Historico extends Component{
                             </div>
                             <div className="card-area flex ai-flex-start">
                                 <div className="card-content flex flex-row flex-wrap jc-space-btw">
-                                    <div className="card flex flex-collumn ai-flex-start">
-                                        <div className="text flex ai-center jc-space-btw">
-                                            <p>21 / 10 / 2021</p>
-                                            <p> - </p>
-                                            <p>14 : 45</p>
-                                        </div>
-                                        <div className="assunto flex ai-center">
-                                            <p id="padrao">Enviou um email com o assunto :</p>
-                                            <p>Proposta Comercial</p>
-                                        </div>
-                                        <div className="btns flex ai-center jc-space-btw">
+                                    <tbody>
+                                    {this.state.listaContatos.map((contato) => {
+                                        return (
+                                            <tr key={contato.idContato} className="">
+                                                 <div className="card flex flex-collumn ai-flex-start">
+                                                 <div className="text flex ai-center jc-space-btw">
+                                            <p>Data: {new Intl.DateTimeFormat('pt-BR').format(new Date(contato.dataCriacao))}</p>
+                                            </div>
+                                            <div className="assunto flex ai-center">
+                                            <p>Titulo: {contato.titulo}</p>
+                                            </div>
+                                            <div className="assunto flex ai-center">
+                                            <p>Descricao: {contato.descricao}</p>
+                                            </div>
+                                            <div className="assunto flex ai-center">
+                                            <p>Empresa: {contato.idEmpresaNavigation.nomeEmpresa}</p>
+                                            </div>
+                                            <div className="btns flex ai-center jc-space-btw">
                                             <div className="action flex ai-center">
-                                                <button className="btn-card flex ai-center jc-center"><i id="lixinho" class="fas fa-trash-alt"></i>Excluir do histórico</button>
+                                                <button className="btn-card flex ai-center jc-center" onClick={() => this.excluirContato }><i id="lixinho" class="fas fa-trash-alt"></i>Excluir do histórico</button>
                                             </div>
                                             <div className="action flex ai-center">
-                                                <button className="btn-card-star flex ai-center jc-center"><i id="star-card" className="fas fa-star"></i>Favoritar</button>
+                                                <button  className="btn-card-star flex ai-center jc-center"><i id="star-card" className="fas fa-star"></i>Favoritar</button>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="card flex flex-collumn ai-flex-start">
-                                        <div className="text flex ai-center jc-space-btw">
-                                            <p>21 / 10 / 2021</p>
-                                            <p> - </p>
-                                            <p>14 : 45</p>
                                         </div>
-                                        <div className="assunto flex ai-center">
-                                            <p id="padrao">Enviou um email com o assunto :</p>
-                                            <p>Proposta Comercial</p>
-                                        </div>
-                                        <div className="btns flex ai-center jc-space-btw">
-                                            <div className="action flex ai-center">
-                                                <button className="btn-card flex ai-center jc-center"><i id="lixinho" class="fas fa-trash-alt"></i>Excluir do histórico</button>
-                                            </div>
-                                            <div className="action flex ai-center">
-                                                <button className="btn-card-star flex ai-center jc-center"><i id="star-card" className="fas fa-star"></i>Favoritar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="card flex flex-collumn ai-flex-start">
-                                        <div className="text flex ai-center jc-space-btw">
-                                            <p>21 / 10 / 2021</p>
-                                            <p> - </p>
-                                            <p>14 : 45</p>
-                                        </div>
-                                        <div className="assunto flex ai-center">
-                                            <p id="padrao">Enviou um email com o assunto :</p>
-                                            <p>Proposta Comercial</p>
-                                        </div>
-                                        <div className="btns flex ai-center jc-space-btw">
-                                            <div className="action flex ai-center">
-                                                <button className="btn-card flex ai-center jc-center"><i id="lixinho" class="fas fa-trash-alt"></i>Excluir do histórico</button>
-                                            </div>
-                                            <div className="action flex ai-center">
-                                                <button className="btn-card-star flex ai-center jc-center"><i id="star-card" className="fas fa-star"></i>Favoritar</button>
-                                            </div>
+                                            </tr>
+                                        )
+                                    })}
+                                    </tbody>
+                                    
+                                    
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                    
                 </section>
                 <div className="bc1"></div>
                 <div className="bc2"></div>
             </main>
         )
-    }
+                                }
 
 }
