@@ -6,6 +6,8 @@ FROM   Usuarios;
 /* Arrumar tabela de usuário */
 
 SELECT * FROM TipoUsuario
+
+SELECT * FROM Usuarios
  
 SELECT IdEmpresa,  NomeEmpresa, NumeroDeFuncionarios, NumeroDeTelefone, EmailEmpresa, NomeFantasia, Cnpj, SegmentoDeMercado
 FROM   Empresa;
@@ -17,3 +19,4 @@ SELECT IdContato, Titulo, Descricao, DataCriacao, Favoritar, NomeEmpresa, Nome,C
 INNER JOIN Empresa ON Contato.IdEmpresa = Empresa.IdEmpresa
 INNER JOIN Leads ON Contato.IdLeads = Leads.IdLeads
 
+	

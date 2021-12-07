@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 
 import '../css/base-style.css'
 import '../css/side-bar.css'
@@ -38,6 +40,21 @@ export default class Side extends Component{
                 console.log('aeeeeee')
                 const modal = document.getElementById('modal')
                 modal.classList.remove('mostrar')
+
+
+               const timer = setInterval(() => {
+                    console.log('Interval triggered');
+                    
+                    Swal.fire(
+                        'Good job!',
+                        'You clicked the button!',
+                        'success'
+                      )
+                    clearInterval(timer);
+                  }, 2000);
+
+                  
+               
             }
         })
         .catch(erro => {
@@ -75,6 +92,8 @@ export default class Side extends Component{
     deslogar () {
         localStorage.removeItem('token-login')
     }
+
+
 
     componentDidMount() {
         this.buscaTipo();

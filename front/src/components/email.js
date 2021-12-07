@@ -1,18 +1,10 @@
-import React, { Component } from 'react';
+import React, { useState  } from 'react';
 
 import '../css/base-style.css'
 import '../css/email.css'
 
-export default class Email extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
+function Email() {
 
-        }
-    }
-
-
-    render() {
         return (
             <section className="email-bar flex flex-collumn">
                 <div className="email-content flex flex-collumn ai-center">
@@ -37,5 +29,6 @@ export default class Email extends Component{
                 </div>
             </section>
         )
-    }
 }
+
+export default Email;

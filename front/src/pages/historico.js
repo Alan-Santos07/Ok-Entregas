@@ -27,15 +27,13 @@ export default class Historico extends Component{
         .catch(erro => console.log(erro));
     }
 
-    excluirContato = async (contato) => {
-        this.setState({
-            idContatoSelecionado : contato.idContato
-        })
+    excluirContato = async (id) => {
+     
 
-    await axios.delete('http://localhost:5000/api/contatos/'+this.state.idContatoSelecionado)
-
+    await axios.delete('http://localhost:5000/api/contatos/'+id)
     .then(resposta =>{
         if (resposta.status === 204) {
+            console.log(id)
             console.log("foi")
         }
     })
@@ -98,7 +96,7 @@ componentDidMount(){
                                             </div>
                                             <div className="btns flex ai-center jc-space-btw">
                                             <div className="action flex ai-center">
-                                                <button className="btn-card flex ai-center jc-center" onClick={() => this.excluirContato }><i id="lixinho" class="fas fa-trash-alt"></i>Excluir do histórico</button>
+                                                <button className="btn-card flex ai-center jc-center" onClick={() => this.excluirContato(contato.idContato) }><i id="lixinho" class="fas fa-trash-alt"></i>Excluir do histórico</button>
                                             </div>
                                             <div className="action flex ai-center">
                                                 <button  className="btn-card-star flex ai-center jc-center"><i id="star-card" className="fas fa-star"></i>Favoritar</button>
@@ -109,8 +107,6 @@ componentDidMount(){
                                         )
                                     })}
                                     </tbody>
-                                    
-                                    
                                         </div>
                                     </div>
                                 </div>
