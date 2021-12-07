@@ -6,6 +6,7 @@ import Home from './pages/home'
 import Dashboard from './pages/dashboard'
 import Voip from './pages/voip'
 import Historico from './pages/historico'
+import Leads from './pages/leads';
 
 import { Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
@@ -29,6 +30,7 @@ const rotas = (
       <Route path = "/dashboard" component = {Dashboard}/>
       <Route path = "/voice" component = {Voip}/>
       <Route path = "/historico" component = {Historico}/>
+      <Route path = "/leads" component = {Leads}/>
       <Redirect to= "/notfound"/>
     </Switch>
   </Router>

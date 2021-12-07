@@ -1,4 +1,5 @@
-﻿using OkEntrega.webApi.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using OkEntrega.webApi.Contexts;
 using OkEntrega.webApi.Domains;
 using OkEntrega.webApi.Interfaces;
 using System;
@@ -90,7 +91,7 @@ namespace OkEntrega.webApi.Repositorios
         public List<Lead> Listar()
         {
 
-            return ctx.Leads
+            return ctx.Leads.Include(e => e.IdEmpresaNavigation)
             .ToList();
 
         }
