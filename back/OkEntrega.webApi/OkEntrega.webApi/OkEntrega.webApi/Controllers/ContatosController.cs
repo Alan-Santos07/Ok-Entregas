@@ -36,6 +36,22 @@ namespace OkEntrega.webApi.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetId(int id)
+        {
+            try
+            {
+                Contato buscado = contatoRepository.BuscarPorId(id);
+
+                return Ok(buscado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+
+        }
+
         [HttpPost]
         public IActionResult Post(Contato novoContato)
         {
