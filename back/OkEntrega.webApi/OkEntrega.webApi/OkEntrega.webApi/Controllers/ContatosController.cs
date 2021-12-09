@@ -5,6 +5,7 @@ using OkEntrega.webApi.Interfaces;
 using OkEntrega.webApi.Repositorios;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -77,6 +78,24 @@ namespace OkEntrega.webApi.Controllers
             {
                 return BadRequest(ex);
 
+            }
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult PatchFavoritar(int id, Contato favoritar)
+        {
+            try
+            {
+                contatoRepository.Favoritar(id, favoritar.IdContato.ToString());
+
+                return StatusCode(204);
+                }
+                
+            
+            catch (Exception codErro)
+            {
+
+                return BadRequest(codErro);
             }
         }
 

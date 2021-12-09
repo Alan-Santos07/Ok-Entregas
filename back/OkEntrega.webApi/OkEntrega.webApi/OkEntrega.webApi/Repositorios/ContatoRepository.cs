@@ -75,6 +75,27 @@ namespace OkEntrega.webApi.Repositorios
             ctx.SaveChanges();
         }
 
+        public void Favoritar(int id, string favoritar)
+        {
+            Contato contatoBuscado = ctx.Contatos
+                .FirstOrDefault(c => c.IdContato == id);
+
+            switch (favoritar)
+            {
+                case "1":
+                    contatoBuscado.Favoritar = true;
+                    break;
+
+                case "2":
+                    contatoBuscado.Favoritar = false;
+                    break;
+
+            }
+            ctx.Contatos.Update(contatoBuscado);
+            ctx.SaveChanges();
+            
+        }
+
         public List<Contato> Listar()
         {
             return ctx.Contatos.Include(e => e.IdEmpresaNavigation).Include(e => e.IdLeadsNavigation).OrderByDescending(d => d.DataCriacao)

@@ -31,5 +31,6 @@ namespace OkEntrega.webApi.Interfaces
         /// </summary>
         void Deletar(int id);
 
+        void Favoritar(int id, string favoritar);
     }
 }
