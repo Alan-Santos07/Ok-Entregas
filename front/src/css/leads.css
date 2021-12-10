@@ -1,0 +1,53 @@
+.tabela-leads{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tabela-leads td, .tabela-leads th{
+    padding: 8px;
+}
+
+.tabela-leads td{
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.tabela-leads tr:hover {
+    background-color: #ddd;
+}
+
+.tabela-leads tr{
+    text-align: center;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+}
+
+.tabela-leads th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: white;
+    color: #2ECC71;
+    border: 2px solid #2ECC71;
+}
+
+.btn-leads{
+    width: 150px;
+    height: 40px;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+    outline: none;
+    border: none;
+    font-size: 14px;
+    color: 000;
+    font-weight: 600;
+    border-radius: 30px;
+}
+
+#lixinho-leads{
+    margin-right: 14px;
+    color: #CE312D;
+}
+
+.card-content-leads{
+    width: 58vw;
+}

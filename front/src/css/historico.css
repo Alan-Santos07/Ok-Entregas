@@ -45,14 +45,15 @@ h2{
 }
 
 .card{
-    width: 400px;
-    height: 180px;
+    width: 250px;
+    height: 230px;
     border: 3px solid rgba(255, 255, 255, 0.8);
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.6));
     border-radius: 30px 15px 15px 30px;
     padding-left: 16px;
     padding-top: 10px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .text{
@@ -60,8 +61,13 @@ h2{
     width: 60%;
 }
 
+.text-data p{
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
 .assunto{
-    font-size: 12px;
+    font-size: 14px;
     width: 90%;
     margin: 8px 0;
 }
@@ -79,10 +85,11 @@ h2{
     font-weight: 500;
     cursor: pointer;
     color: #000000;
+    margin-bottom: 18px;
 }
 
 .btn-card-star{
-    width: 120px;
+    width: 140px;
     height: 40px;
     border-radius: 30px;
     border: 3px solid rgba(255, 255, 255, 0.8);
@@ -107,4 +114,58 @@ h2{
     font-size: 18px;
     color: #F9BD72;
     margin-right: 10px;
+}
+
+.modal-card{
+    width: 100vw;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 8;
+
+    display: none;
+    background-color: #14262b86;
+}
+
+.modal-card-content{
+    width: 700px;
+    height: 650px;
+
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+}
+
+.mostrar{
+    display: flex;
+}
+
+.btn-deletar-historico{
+    width: 140px;
+    height: 40px;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+    outline: none;
+    border: none;
+    font-size: 14px;
+    color: 000;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.btn-favoritar-historico{
+    width: 140px;
+    height: 40px;
+    margin-left: 20px;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+    outline: none;
+    border: none;
+    font-size: 14px;
+    color: 000;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
 }

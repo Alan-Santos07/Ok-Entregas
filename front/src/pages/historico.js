@@ -11,6 +11,7 @@ export default class Historico extends Component{
         super(props);
         this.state = {
             listaContatos: [],
+            perfilContato: [],
             idContatoSelecionado : 0,
         }
     }
@@ -27,23 +28,64 @@ export default class Historico extends Component{
         .catch(erro => console.log(erro));
     }
 
-    excluirContato = async (id) => {
-     
-
-    await axios.delete('http://localhost:5000/api/contatos/'+id)
-    .then(resposta =>{
-        if (resposta.status === 204) {
-            console.log(id)
-            console.log("foi")
-        }
-    })
-    .catch(erro => console.log(erro))
-
-    .then(this.buscaContatos)
+    buscarContatosId = () => {
+        axios(`https://localhost:5001/api/Contatos/${this.state.idContatoSelecionado}`)
+        .then(resposta => {
+            if (resposta.status === 200) {
+                this.setState({ perfilContato: resposta.data })
+            }
+        })
     }
-componentDidMount(){
-    this.buscaContatos();
-}
+
+    excluirContato = async (contato) => {
+        this.setState({
+            idContatoSelecionado : contato.idContato
+        })
+
+        await axios.delete('http://localhost:5000/api/contatos/'+this.state.idContatoSelecionado)
+
+        .then(resposta =>{
+            if (resposta.status === 204) {
+                console.log("foi")
+            }
+        })
+        .catch(erro => console.log(erro))
+
+        .then(this.buscaContatos)
+    }
+    
+    abreModal = () => {
+        const modal = document.getElementById('modal-card')
+        modal.classList.add('mostrar')
+        modal.addEventListener('click', (e) => {
+            if (e.target.id === "modal-card" || e.target.id === "fechar") {
+                modal.classList.remove('mostrar')
+            }
+        })
+    }
+
+    buscarId = async (event) => {
+        this.setState({
+            idContatoSelecionado : event.idContato
+        })
+        
+        await axios("http://localhost:5000/api/Contatos/" + this.state.idContatoSelecionado)
+        .then(resposta => {
+            if (resposta.status === 200) {
+                this.setState({ perfilContato: resposta.data})
+                console.log("puxou o id")
+            }
+            console.log(this.state.perfilContato)
+        })
+        .catch(erro => console.log(erro))
+
+        this.abreModal()
+    }
+    
+    componentDidMount(){
+        this.buscaContatos();
+    }
+
     render() {
         return (
             <main>
@@ -51,18 +93,24 @@ componentDidMount(){
                 <Email/>
                 <section className="content">
                     <div className="glass-home flex flex-collumn ai-flex-start jc-flex-start">
-                        <h1>Digite um CNPJ</h1>
+                        <h1>Histórico</h1>
                         <form className="pesquisa flex">
                             <div className="inputs-home flex flex-collumn">
-                                <label>CNPJ</label>
-                                <input type="text"></input>
-                            </div>
-                            <div className="flex ai-center ai-flex-end">
-                                <button className="btn-pesquisar flex ai-center jc-center"><i id="lupa" className="fas fa-search"></i>Buscar</button>
+                                <label>Selecione uma Empresa</label>
+                                <form className='flex'>
+                                    <select>
+                                        <option disabled>Escolha uma Empresa</option>
+                                        <option>Coca-Cola</option>
+                                        <option>McDonalds</option>
+                                    </select>
+                                    <div className="flex ai-center ai-flex-end">
+                                        <button type='submit' className="btn-pesquisar flex ai-center jc-center"><i id="lupa" className="fas fa-search"></i>Buscar</button>
+                                    </div>
+                                </form>
                             </div>
                         </form>
                         <div className="history flex flex-collumn ai-flex-start">
-                            <h2>Nome da Empresa</h2>
+                            <h2>Todas as Chamadas</h2>
                             <p>Ordenar por :</p>
                             <div className="ordenar flex ai-center jc-space-btw">
                                 <div className="order flex ai-center">
@@ -77,46 +125,53 @@ componentDidMount(){
                             </div>
                             <div className="card-area flex ai-flex-start">
                                 <div className="card-content flex flex-row flex-wrap jc-space-btw">
-                                    <tbody>
-                                    {this.state.listaContatos.map((contato) => {
-                                        return (
-                                            <tr key={contato.idContato} className="">
-                                                 <div className="card flex flex-collumn ai-flex-start">
-                                                 <div className="text flex ai-center jc-space-btw">
-                                            <p>Data: {new Intl.DateTimeFormat('pt-BR').format(new Date(contato.dataCriacao))}</p>
-                                            </div>
-                                            <div className="assunto flex ai-center">
-                                            <p>Titulo: {contato.titulo}</p>
-                                            </div>
-                                            <div className="assunto flex ai-center">
-                                            <p>Descricao: {contato.descricao}</p>
-                                            </div>
-                                            <div className="assunto flex ai-center">
-                                            <p>Empresa: {contato.idEmpresaNavigation.nomeEmpresa}</p>
-                                            </div>
-                                            <div className="btns flex ai-center jc-space-btw">
-                                            <div className="action flex ai-center">
-                                                <button className="btn-card flex ai-center jc-center" onClick={() => this.excluirContato(contato.idContato) }><i id="lixinho" class="fas fa-trash-alt"></i>Excluir do histórico</button>
-                                            </div>
-                                            <div className="action flex ai-center">
-                                                <button  className="btn-card-star flex ai-center jc-center"><i id="star-card" className="fas fa-star"></i>Favoritar</button>
-                                            </div>
-                                        </div>
-                                        </div>
+                                    <table className="tabela-leads">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome</th>
+                                                <th>Empresa</th>
+                                                <th>Data</th>
+                                                <th>Ações</th>
                                             </tr>
-                                        )
-                                    })}
-                                    </tbody>
-                                        </div>
-                                    </div>
+                                        </thead>
+                                        {this.state.listaContatos.map((contato) => {
+                                            return(
+                                                <tbody className="tabela-body">
+                                                    <tr onClick={()=> {this.buscarId(contato)}} key={contato.idContato}>
+                                                        <td>{contato.titulo}</td>
+                                                        <td>{contato.idEmpresaNavigation.nomeEmpresa}</td>
+                                                        <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(contato.dataCriacao))}</td>
+                                                        <td>
+                                                            <button className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button>
+                                                            <button className="btn-favoritar-historico"><i id="star" className="fas fa-star"></i>Favoritar</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            )
+                                        })}
+                                    </table>
                                 </div>
                             </div>
-                    
+                        </div>
+                    </div>
+                </section>
+                <section className="modal-card flex ai-center jc-center " id="modal-card">
+                    <div className="modal-card-content">
+                        <h1>Oieee</h1>
+                        {this.state.perfilContato.map((dados) => {
+                            return (
+                                <div className="">
+                                    <div className="">
+                                        <p>{dados.titulo}</p>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </section>
                 <div className="bc1"></div>
                 <div className="bc2"></div>
             </main>
         )
-                                }
-
+    }
 }
