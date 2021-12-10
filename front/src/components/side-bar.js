@@ -106,9 +106,9 @@ export default class Side extends Component{
                         <ul className="side-bar-ul flex jc-space-eve flex-collumn">
                             <li><Link to ="/home"><i id="icon-home" className="fas fa-home"></i></Link></li>
                             <li><a onClick={this.abreModal}><i id="icon-user" className="fas fa-user-plus"></i></a></li>
-                            <li><Link to ="/leads"><i id="icon-history" className="fas fa-history"></i></Link></li>
+                            <li><Link to ="/leads"><i id="icon-leads" class="fas fa-street-view"></i></Link></li>
                             <li><Link to ="/historico"><i id="icon-history" className="fas fa-history"></i></Link></li>
-                            <li><Link to ="/voice"><i id="icon-phone" className="fas fa-phone"></i></Link></li>
+                            <li><Link to ="/voice"><i id="icon-empresa" class="fas fa-store"></i></Link></li>
                             <li><Link><i id="icon-office" className="fas fa-th-large"></i></Link></li>
                             <li><Link to ="/"><i onClick={this.deslogar} id="icon-off" className="fas fa-power-off"></i></Link></li>
                         </ul>

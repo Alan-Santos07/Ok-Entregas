@@ -47,7 +47,7 @@
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
 }
 
-#icon-home, #icon-chart, #icon-user, #icon-history, #icon-phone, #icon-phone, #icon-office, #icon-off{
+#icon-home, #icon-chart, #icon-user, #icon-history, #icon-empresa, #icon-office, #icon-off, #icon-leads{
     font-size: 24px;
 }
 
@@ -68,7 +68,13 @@
     padding-left: 1.5px;
 }
 
-#icon-phone{
+#icon-leads{
+    color: #3FA1BF;
+    padding-top: 4px;
+    font-size: 26px;
+}
+
+#icon-empresa{
     color: #DD4DA5;
     padding-top: 3px;
 }

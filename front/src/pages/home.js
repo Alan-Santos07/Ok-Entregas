@@ -38,8 +38,6 @@ function Login () {
         .catch(error => console.log(error))
    }
 
-
-
    return(
     <main>
         
@@ -69,9 +67,6 @@ function Login () {
                                 <div className="inputs-resultado flex ai-center">
                                     <label>Telefone :</label>
                                     <input type="text" value={cpnjTelefone} onChange={(event) => setCNPJTelefone(event.target.value)} name={cpnjTelefone} disabled></input>
-                                    <div className="call">
-                                        <button>Ligar<i id="ligar" className="fas fa-phone"></i></button>
-                                    </div>
                                 </div>
                                 <div className="inputs-resultado flex ai-center">
                                     <label>Razão Social :</label>
