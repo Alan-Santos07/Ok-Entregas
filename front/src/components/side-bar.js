@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
+import Loading from './Loading';    
 
 
 import '../css/base-style.css'
@@ -18,12 +19,16 @@ export default class Side extends Component{
             senha : '',
             IdTipoUsuario: 0,
             listaTipoUsuario: [],
-            verificacao : false
+            verificacao : false,
+            isLoading: false
+
         }
     }
 
     cadastrarUser = (event) => {
         event.preventDefault();
+
+        this.setState({ erroMensagem:'', isLoading: true})
 
         let usuario = {
             email : this.state.email,
@@ -33,34 +38,24 @@ export default class Side extends Component{
             idTipoUsuario : this.state.IdTipoUsuario,
             verificacaoEmail : this.state.verificacao
         };
-        axios.post("http://localhost:5000/api/usuario", usuario)
+
+        setTimeout(() => {
+            axios.post("http://localhost:5000/api/usuario", usuario)
             
-        .then (resposta => {
-            if(resposta.status === 201){
-                console.log('aeeeeee')
-                const modal = document.getElementById('modal')
-                modal.classList.remove('mostrar')
-
-
-               const timer = setInterval(() => {
-                    console.log('Interval triggered');
-                    
-                    Swal.fire(
-                        'Good job!',
-                        'You clicked the button!',
-                        'success'
-                      )
-                    clearInterval(timer);
-                  }, 2000);
-
-                  
-               
-            }
-        })
-        .catch(erro => {
-            console.log(erro);
-        })
+            .then (resposta => {
+                if(resposta.status === 201){
+                    console.log('aeeeeee')
+                    const modal = document.getElementById('modal')
+                    modal.classList.remove('mostrar')                        
+                }
+            })
+            .catch(erro => {
+                console.log(erro);
+            })        
+        }, 3000);
+    
     }
+
     atualizaStateCampo = (campo) => {
         this.setState({[campo.target.name]: campo.target.value})
       }
@@ -160,10 +155,21 @@ export default class Side extends Component{
                                 </label>
                             </div>
                         </div>
-                       
-                        <div className="flex ai-center ai-flex-end">
-                            <button type="submit" className="btn-cadastro flex ai-center jc-center"><i id="cadastrinho" className="fas fa-user-plus"></i>Cadastrar</button>
-                        </div>
+                        {
+                                this.state.isLoading === true && 
+                                //<button type="submit" disabled>Loading...</button>
+                                <Loading />
+
+
+                            }
+
+                            {
+                                this.state.isLoading === false && 
+                                <div className="flex ai-center ai-flex-end">
+                                    <button type="submit" className="btn-cadastro flex ai-center jc-center"><i id="cadastrinho" className="fas fa-user-plus"></i>Cadastrar</button>
+                                </div>
+                            }
+
                     </form>
                 </section>
             </section>

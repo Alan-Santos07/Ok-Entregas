@@ -6,6 +6,7 @@ import { parseJwt, usuarioAutenticado } from '../services/auth';
 
 import logo from '../img/logo.png'
 import welcome from '../img/welcome.png'
+import Loading from '../components/Loading';
 
 import '../css/base-style.css'
 import '../css/login.css'
@@ -17,7 +18,8 @@ export default class Login extends Component{
             email: "",
             senha: "",
             erroMensagem: "",
-            isLoading: false
+            isLoading: false,
+
         }
     };
 
@@ -25,7 +27,10 @@ efetuaLogin =(event) =>{
     event.preventDefault();
 
     this.setState({ erroMensagem:'', isLoading: true})
-    axios.post('http://localhost:5000/api/login', {
+
+
+    setTimeout(() => {
+        axios.post('http://localhost:5000/api/login', {
         email: this.state.email,
         senha: this.state.senha
     })
@@ -36,6 +41,7 @@ efetuaLogin =(event) =>{
 
             console.log('Meu token: ' + resposta.data.token)
             this.setState({isLoading: false})
+         
 
             console.log(parseJwt());
             console.log(parseJwt().role);
@@ -54,6 +60,13 @@ efetuaLogin =(event) =>{
         this.setState({ erroMensagem : "E-mail ou senha inválidos! Tente novamente.", isLoading: false})
         
     })
+    }, 3000);
+
+    
+
+                
+
+
 }
 
 atualizaStateCampo =  async (campo) => {
@@ -65,6 +78,7 @@ atualizaStateCampo =  async (campo) => {
             <main>
                 <section className="glass">
                     <div className="user-info">
+
                         <h1>Login</h1>
                         <form onSubmit={this.efetuaLogin} className="forms">
                             <div className="inputs">
@@ -92,7 +106,10 @@ atualizaStateCampo =  async (campo) => {
                             
                             {
                                 this.state.isLoading === true && 
-                                <button type="submit" disabled>Loading...</button>
+                                //<button type="submit" disabled>Loading...</button>
+                                <Loading />
+
+
                             }
 
                             {
@@ -107,6 +124,7 @@ atualizaStateCampo =  async (campo) => {
                                 </button>
                             }
 
+                            
                             {/* <button type="submit" className="btn">Logar</button>  */}
                         </form>
                     </div>

@@ -43,6 +43,7 @@ function Login () {
         
             <Side/>
             <Email/>
+            
                 <section className="content">
                     <div className="glass-home flex flex-collumn ai-flex-start jc-flex-start">
                         <h1>Digite um CNPJ</h1>
