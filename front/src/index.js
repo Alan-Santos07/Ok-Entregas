@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Login from './pages/login'
 import Home from './pages/home'
-import Dashboard from './pages/dashboard'
-import Voip from './pages/voip'
+import Empresa from './pages/empresa'
 import Historico from './pages/historico'
 import Leads from './pages/leads';
 
@@ -27,8 +26,7 @@ const rotas = (
     <Switch>
       <Route exact path = "/" component = {Login}/>
       <PermissaoAdm path = "/home" component = {Home}/>
-      <Route path = "/dashboard" component = {Dashboard}/>
-      <Route path = "/voice" component = {Voip}/>
+      <Route path = "/empresa" component = {Empresa}/>
       <Route path = "/historico" component = {Historico}/>
       <Route path = "/leads" component = {Leads}/>
       <Redirect to= "/notfound"/>

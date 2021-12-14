@@ -7964,19 +7964,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DarkC\\.nuget\\packages\\": {}
+    "C:\\Users\\alanc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DarkC\\Desktop\\SENAIProjeto\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
+      "projectUniqueName": "D:\\Trabalho\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
       "projectName": "OkEntrega.webApi",
-      "projectPath": "C:\\Users\\DarkC\\Desktop\\SENAIProjeto\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
-      "packagesPath": "C:\\Users\\DarkC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DarkC\\Desktop\\SENAIProjeto\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\obj\\",
+      "projectPath": "D:\\Trabalho\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
+      "packagesPath": "C:\\Users\\alanc\\.nuget\\packages\\",
+      "outputPath": "D:\\Trabalho\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DarkC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\alanc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8073,7 +8073,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.206\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
