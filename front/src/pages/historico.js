@@ -11,7 +11,7 @@ export default class Historico extends Component{
         super(props);
         this.state = {
             listaContatos: [],
-            perfilContato: [],
+            perfilContato: "",
             idContatoSelecionado : 0,
         }
     }
@@ -26,15 +26,6 @@ export default class Historico extends Component{
             console.log(this.state.listaContatos)
         })
         .catch(erro => console.log(erro));
-    }
-
-    buscarContatosId = () => {
-        axios(`https://localhost:5001/api/Contatos/${this.state.idContatoSelecionado}`)
-        .then(resposta => {
-            if (resposta.status === 200) {
-                this.setState({ perfilContato: resposta.data })
-            }
-        })
     }
 
     excluirContato = async (contato) => {
@@ -64,18 +55,17 @@ export default class Historico extends Component{
         })
     }
 
-    buscarId = async (event) => {
-        this.setState({
-            idContatoSelecionado : event.idContato
-        })
-        
-        await axios("http://localhost:5000/api/Contatos/" + this.state.idContatoSelecionado)
+    buscarId = async (id) => {
+
+        await axios("http://localhost:5000/api/Contatos/" + id)
         .then(resposta => {
             if (resposta.status === 200) {
-                this.setState({ perfilContato: resposta.data})
+                this.setState({ perfilContato: resposta.data.titulo})
                 console.log("puxou o id")
             }
             console.log(this.state.perfilContato)
+            console.log(this.state.perfilContato1)
+
         })
         .catch(erro => console.log(erro))
 
@@ -137,7 +127,7 @@ export default class Historico extends Component{
                                         {this.state.listaContatos.map((contato) => {
                                             return(
                                                 <tbody className="tabela-body">
-                                                    <tr onClick={()=> {this.buscarId(contato)}} key={contato.idContato}>
+                                                    <tr onClick={()=> {this.buscarId(contato.idContato)}} key={contato.idContato}>
                                                         <td>{contato.titulo}</td>
                                                         <td>{contato.idEmpresaNavigation.nomeEmpresa}</td>
                                                         <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(contato.dataCriacao))}</td>
@@ -155,7 +145,7 @@ export default class Historico extends Component{
                         </div>
                     </div>
                 </section>
-                <section className="modal-card flex ai-center jc-center " id="modal-card">
+                {/* <section className="modal-card flex ai-center jc-center " id="modal-card">
                     <div className="modal-card-content">
                         <h1>Oieee</h1>
                         {this.state.perfilContato.map((dados) => {
@@ -167,6 +157,16 @@ export default class Historico extends Component{
                                 </div>
                             )
                         })}
+                    </div>
+                </section> */}
+                <section className="modal-card flex ai-center jc-center " id="modal-card">
+                    <div className="modal-card-content">
+                        <h1>Oieee</h1>
+                                <div className="">
+                                    <div className="">
+                                        <p>{this.state.perfilContato}</p>
+                                    </div>
+                                </div>
                     </div>
                 </section>
                 <div className="bc1"></div>

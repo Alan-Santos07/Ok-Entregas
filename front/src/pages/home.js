@@ -11,17 +11,22 @@ function Login () {
     const [cpnjTelefone, setCNPJTelefone] = useState("");
     const [cpnjNome, setCNPJNome] = useState("");
     const [params, setParams] = useState("")
+    const [MsgError, SetMsgError] = useState("")
+    const [StatusError, SetStatusError] = useState(false)
+
+
 
 
 
 
     async function BuscarCnpj(event){
-        console.log("entrou")
         event.preventDefault();
+        SetMsgError("")
 
+
+        
         await axios.get(`https://www.receitaws.com.br/v1/cnpj/${params}`)
         .then(rps => {
-            console.log(rps.data)
             setCNPJ(
                 rps.data.email
             )
@@ -34,8 +39,34 @@ function Login () {
             setCNPJTelefone(
                 rps.data.telefone
             )
+            SetMsgError(
+                rps.data.message
+            )
+            
+            if(MsgError === "CNPJ inválido"){
+                console.log("Entrou Vagabundo !!")
+                setCNPJ("")
+                setCNPJRazao("")
+                setCNPJNome("")
+                setCNPJTelefone("")
+                SetStatusError(true);
+                SetMsgError("Cnpj Inválido")
+            }else{
+                SetStatusError(false);
+            }
+            
         })
-        .catch(error => console.log(error))
+        .catch(error => console.log(error),
+
+        setCNPJ(""),
+        setCNPJRazao(""),
+        setCNPJNome(""),
+        setCNPJTelefone(""),
+        SetMsgError(""),
+        SetStatusError(true),
+//        SetMsgError("Cnpj Inválidoaaa")
+        )
+        
    }
 
    return(
@@ -54,7 +85,17 @@ function Login () {
                             </div>
                             <div className="flex ai-center ai-flex-end">
                                 <button className="btn-pesquisar flex ai-center jc-center"><i id="lupa" className="fas fa-search" type='submit'></i>Buscar</button>
-                            </div>
+                                {
+                                    StatusError === true && 
+                                    <p style={{color: "red",  marginBottom: 8, marginLeft: 14}}>{MsgError}</p>
+
+                                }
+                                {
+                                    StatusError === false && 
+                                    <p></p>
+                                    
+                                }
+                            </div>          
                         </form>
                         <div className="resultado">
                             <div className="resultado-content flex flex-collumn ai-flex-start jc-space-eve">
