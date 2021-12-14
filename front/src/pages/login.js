@@ -57,8 +57,7 @@ efetuaLogin =(event) =>{
     })
 
     .catch(() => {
-        this.setState({ erroMensagem : "E-mail ou senha inválidos! Tente novamente.", isLoading: false})
-        
+        this.setState({ erroMensagem : "E-mail ou senha inválidos! Tente novamente.", isLoading: false})   
     })
     }, 3000);
 
@@ -101,7 +100,7 @@ atualizaStateCampo =  async (campo) => {
                                 ></input>
                             </div>
                             <Link to ="/" className="forgot"><p>Esqueceu a sua senha ?</p></Link>
-                            <p>{this.state.erroMensagem}</p>
+                            <p style={{color: "red", marginBottom: 20}}>{this.state.erroMensagem}</p>
 
                             
                             {

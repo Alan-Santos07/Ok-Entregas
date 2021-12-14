@@ -21,7 +21,8 @@ function Login () {
 
     async function BuscarCnpj(event){
         event.preventDefault();
-        SetStatusError(false);
+        SetMsgError("")
+
 
         
         await axios.get(`https://www.receitaws.com.br/v1/cnpj/${params}`)
@@ -48,12 +49,24 @@ function Login () {
                 setCNPJRazao("")
                 setCNPJNome("")
                 setCNPJTelefone("")
-                SetMsgError("")
                 SetStatusError(true);
+                SetMsgError("Cnpj Inválido")
+            }else{
+                SetStatusError(false);
             }
             
         })
-        .catch(error => console.log(error))
+        .catch(error => console.log(error),
+
+        setCNPJ(""),
+        setCNPJRazao(""),
+        setCNPJNome(""),
+        setCNPJTelefone(""),
+        SetMsgError(""),
+        SetStatusError(true),
+//        SetMsgError("Cnpj Inválidoaaa")
+        )
+        
    }
 
    return(
@@ -72,10 +85,9 @@ function Login () {
                             </div>
                             <div className="flex ai-center ai-flex-end">
                                 <button className="btn-pesquisar flex ai-center jc-center"><i id="lupa" className="fas fa-search" type='submit'></i>Buscar</button>
-
                                 {
                                     StatusError === true && 
-                                    <p>{MsgError}</p>
+                                    <p style={{color: "red",  marginBottom: 8, marginLeft: 14}}>{MsgError}</p>
 
                                 }
                                 {
@@ -83,9 +95,7 @@ function Login () {
                                     <p></p>
                                     
                                 }
-
-
-                            </div>
+                            </div>          
                         </form>
                         <div className="resultado">
                             <div className="resultado-content flex flex-collumn ai-flex-start jc-space-eve">
