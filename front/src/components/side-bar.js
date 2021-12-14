@@ -46,7 +46,8 @@ export default class Side extends Component{
                 if(resposta.status === 201){
                     console.log('aeeeeee')
                     const modal = document.getElementById('modal')
-                    modal.classList.remove('mostrar')                        
+                    modal.classList.remove('mostrar')          
+                    this.setState({ erroMensagem:'', isLoading: false})
                 }
             })
             .catch(erro => {

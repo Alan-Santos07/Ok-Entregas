@@ -11,17 +11,21 @@ function Login () {
     const [cpnjTelefone, setCNPJTelefone] = useState("");
     const [cpnjNome, setCNPJNome] = useState("");
     const [params, setParams] = useState("")
+    const [MsgError, SetMsgError] = useState("")
+    const [StatusError, SetStatusError] = useState(false)
+
+
 
 
 
 
     async function BuscarCnpj(event){
-        console.log("entrou")
         event.preventDefault();
+        SetStatusError(false);
 
+        
         await axios.get(`https://www.receitaws.com.br/v1/cnpj/${params}`)
         .then(rps => {
-            console.log(rps.data)
             setCNPJ(
                 rps.data.email
             )
@@ -34,6 +38,20 @@ function Login () {
             setCNPJTelefone(
                 rps.data.telefone
             )
+            SetMsgError(
+                rps.data.message
+            )
+            
+            if(MsgError === "CNPJ inválido"){
+                console.log("Entrou Vagabundo !!")
+                setCNPJ("")
+                setCNPJRazao("")
+                setCNPJNome("")
+                setCNPJTelefone("")
+                SetMsgError("")
+                SetStatusError(true);
+            }
+            
         })
         .catch(error => console.log(error))
    }
@@ -54,6 +72,19 @@ function Login () {
                             </div>
                             <div className="flex ai-center ai-flex-end">
                                 <button className="btn-pesquisar flex ai-center jc-center"><i id="lupa" className="fas fa-search" type='submit'></i>Buscar</button>
+
+                                {
+                                    StatusError === true && 
+                                    <p>{MsgError}</p>
+
+                                }
+                                {
+                                    StatusError === false && 
+                                    <p></p>
+                                    
+                                }
+
+
                             </div>
                         </form>
                         <div className="resultado">
