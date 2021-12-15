@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\medge\\OneDrive\\Área de Trabalho\\SenaiRepository\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj": {}
+    "C:\\Users\\45546332840\\Desktop\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\medge\\OneDrive\\Área de Trabalho\\SenaiRepository\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj": {
+    "C:\\Users\\45546332840\\Desktop\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\medge\\OneDrive\\Área de Trabalho\\SenaiRepository\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
+        "projectUniqueName": "C:\\Users\\45546332840\\Desktop\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
         "projectName": "OkEntrega.webApi",
-        "projectPath": "C:\\Users\\medge\\OneDrive\\Área de Trabalho\\SenaiRepository\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
-        "packagesPath": "C:\\Users\\medge\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\medge\\OneDrive\\Área de Trabalho\\SenaiRepository\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\obj\\",
+        "projectPath": "C:\\Users\\45546332840\\Desktop\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
+        "packagesPath": "C:\\Users\\45546332840\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\45546332840\\Desktop\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\medge\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\45546332840\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -115,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

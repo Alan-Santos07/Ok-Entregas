@@ -980,3 +980,4 @@ C:\Users\DarkC\Desktop\projetoSenai\Ok-Entregas\back\OkEntrega.webApi\OkEntrega.
 C:\Users\DarkC\Desktop\projetoSenai\Ok-Entregas\back\OkEntrega.webApi\OkEntrega.webApi\OkEntrega.webApi\obj\Debug\net5.0\ref\OkEntrega.webApi.dll
 C:\Users\DarkC\Desktop\projetoSenai\Ok-Entregas\back\OkEntrega.webApi\OkEntrega.webApi\OkEntrega.webApi\obj\Debug\net5.0\OkEntrega.webApi.pdb
 C:\Users\DarkC\Desktop\projetoSenai\Ok-Entregas\back\OkEntrega.webApi\OkEntrega.webApi\OkEntrega.webApi\obj\Debug\net5.0\OkEntrega.webApi.genruntimeconfig.cache
+C:\Users\45546332840\Desktop\Ok-Entregas\back\OkEntrega.webApi\OkEntrega.webApi\OkEntrega.webApi\obj\Debug\net5.0\OkEntrega.webApi.csproj.CopyComplete
