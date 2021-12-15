@@ -46,7 +46,10 @@ export default class Empresa extends Component{
         .catch(erro => {
             console.log(erro);
         })
+
     }
+
+
 
     atualizaStateCampo = (campo) => {
         this.setState({[campo.target.name]: campo.target.value})
