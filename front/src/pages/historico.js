@@ -11,6 +11,8 @@ export default class Historico extends Component{
         super(props);
         this.state = {
             listaContatos: [],
+            listaEmpresa: [],
+            listaLead: [],
             perfilContato: "",
             idContatoSelecionado : 0,
         }
@@ -33,7 +35,7 @@ export default class Historico extends Component{
             idContatoSelecionado : contato.idContato
         })
 
-        await axios.delete('http://localhost:5000/api/contatos/'+this.state.idContatoSelecionado)
+        await axios.delete('http://localhost:5000/api/Contatos/'+this.state.idContatoSelecionado)
 
         .then(resposta =>{
             if (resposta.status === 204) {
@@ -55,6 +57,16 @@ export default class Historico extends Component{
         })
     }
 
+    abreModalHs = () => {
+        const modal = document.getElementById('modal-card-historico')
+        modal.classList.add('mostrar')
+        modal.addEventListener('click', (e) => {
+            if (e.target.id === "modal-card-historico" || e.target.id === "fechar") {
+                modal.classList.remove('mostrar')
+            }
+        })
+    }
+
     buscarId = async (id) => {
 
         await axios("http://localhost:5000/api/Contatos/" + id)
@@ -71,10 +83,67 @@ export default class Historico extends Component{
 
         this.abreModal()
     }
-    
-    componentDidMount(){
-        this.buscaContatos();
-    }
+
+    atualizaStateCampo = (campo) => {
+        this.setState({[campo.target.name]: campo.target.value})
+      }
+
+    cadastrarHistorico = (event) => {
+                event.preventDefault();
+        
+                let contato = {
+                    titulo : this.state.titulo,
+                    descricao : this.state.descricao,
+                    dataCriacao : this.state.dataCriacao,
+                    favoritar : 0,
+                    idEmpresa : this.state.IdEmpresa,
+                    idLeads : this.state.IdLead
+                };
+                setTimeout(() => {
+                    axios.post("http://localhost:5000/api/Contatos", contato)
+                    
+                    .then (resposta => {
+                        if(resposta.status === 201){
+                            console.log('foi')
+                            const modal = document.getElementById('modal')
+                            modal.classList.remove('mostrar')          
+                            this.setState({ erroMensagem:'', isLoading: false})
+                        }
+                    })
+                    .catch(erro => {
+                        console.log(erro);
+                    })        
+                }, 3000);
+            
+            }
+
+            buscaEmpresa = () => {
+                axios("http://localhost:5000/api/Empresas")
+                          
+                .then(resposta => {
+                    if(resposta.status === 200){
+                        this.setState({listaEmpresa: resposta.data})
+                        console.log(this.state.listaEmpresa)
+                    }
+                })
+            }
+
+            buscaLead = () => {
+                axios("http://localhost:5000/api/Leads")
+                          
+                .then(respost => {
+                    if(respost.status === 200){
+                        this.setState({listaLead: respost.data})
+                        console.log(this.state.listaLead)
+                    }
+                })
+            }
+
+            componentDidMount(){
+                this.buscaContatos();
+                this.buscaEmpresa();
+                this.buscaLead();
+            }
 
     render() {
         return (
@@ -95,6 +164,9 @@ export default class Historico extends Component{
                                     </select>
                                     <div className="flex ai-center ai-flex-end">
                                         <button type='submit' className="btn-pesquisar flex ai-center jc-center"><i id="lupa" className="fas fa-search"></i>Buscar</button>
+                                    </div>
+                                    <div className="flex ai-center ai-flex-end">
+                                    <button onClick={this.abreModalHs} type='button' className="btn-pesquisar flex ai-center jc-center">Novo Historico</button>
                                     </div>
                                 </form>
                             </div>
@@ -145,20 +217,70 @@ export default class Historico extends Component{
                         </div>
                     </div>
                 </section>
-                {/* <section className="modal-card flex ai-center jc-center " id="modal-card">
+                    <section className="modal-card-historico flex ai-center jc-center" id="modal-card-historico">
                     <div className="modal-card-content">
-                        <h1>Oieee</h1>
-                        {this.state.perfilContato.map((dados) => {
-                            return (
-                                <div className="">
-                                    <div className="">
-                                        <p>{dados.titulo}</p>
-                                    </div>
+                    <form onSubmit={this.cadastrarHistorico} className="modal-content flex flex-collumn ai-center jc-space-eve">
+                        <h1 className="titulinho">Cadastre Um Novo Historico</h1>
+                        <div className="inputs-cadastro flex flex-collumn ai-center">
+                            <label>Nome</label>
+                            <input type="text" name='titulo' value={this.state.titulo} onChange={this.atualizaStateCampo}></input>
+                        </div>
+                        <div className="inputs-cadastro flex flex-collumn ai-center">
+                            <label>Descrição</label>
+                            <input type="text" name='descricao' value={this.state.descricao} onChange={this.atualizaStateCampo}></input>
+                        </div>
+                        <div className="inputs-cadastro flex flex-collumn ai-center">
+                            <label>Data de Criação</label>
+                            <input type="text" name='dataCriacao' value={this.state.dataCriacao} onChange={this.atualizaStateCampo}></input>
+                            
+                        </div>
+                        
+                            <div className="IdEmpresa flex flex-collumn ai-center">
+                                <label>Escolha uma Empresa</label>
+                                <select 
+                                className="select-historico"
+                                name="IdEmpresa" 
+                                value={this.state.IdEmpresa} 
+                                onChange={this.atualizaStateCampo}>
+                                    <option value="0">Selecione Sua Empresa</option>
+                                    {
+                                        this.state.listaEmpresa.map(tipo => {
+                                            return(
+                                                <option key={tipo.IdEmpresa} value={tipo.idEmpresa}>
+                                                    {tipo.nomeEmpresa}
+                                                </option>
+                                            );
+                                        })
+                                    }
+                                </select>
+                            </div>
+                            
+                            <div className="input-select flex flex-collumn ai-center">
+                                <label>Escolha um Lead</label>
+                                <select 
+                                className="select-Lead"
+                                name="IdLead" 
+                                value={this.state.IdLead} 
+                                onChange={this.atualizaStateCampo}>
+                                    <option value="0"> Selecione um Lead </option>
+                                    {
+                                        this.state.listaLead.map(tipo => {
+                                            return(
+                                                <option key={tipo.IdLead} value={tipo.idLeads}>
+                                                    {tipo.nome}
+                                                </option>
+                                            );
+                                        })
+                                    }
+                                </select>
+                            </div>           
+                                <div className="flex ai-center ai-flex-end">
+                                    <button type="submit" className="btn-cadastro flex ai-center jc-center"><i id="icon-history-cadastrar" className="fas fa-history"></i>Cadastrar</button>
                                 </div>
-                            )
-                        })}
+                    </form>
                     </div>
-                </section> */}
+                </section>
+                               
                 <section className="modal-card flex ai-center jc-center " id="modal-card">
                     <div className="modal-card-content">
                         <h1>Oieee</h1>

@@ -61,39 +61,39 @@ export default class Empresa extends Component{
                     <div className="glass-home">
                         <h1>Cadastrar Empresa</h1>
                     </div>
-                    <section className="inputs-empresa">
+                    <section className="empresa-content">
                         <div className='inputs-empresa-content'>
-                            <form onSubmit={this.cadastrarEmpresa}>
-                                <div className="inputs-empresa flex flex-collumn ai-center"> 
+                            <form className='form-empresa flex flex-wrap jc-space-btw' onSubmit={this.cadastrarEmpresa}>
+                                <div className="inputs-empresa flex flex-collumn"> 
                                     <label>Nome da Empresa</label>
                                     <input type="text" name='nomeEmpresa' value={this.state.nomeEmpresa} onChange={this.atualizaStateCampo}/>
                                 </div>
-                                <div className="inputs-empresa flex flex-collumn ai-center">
+                                <div className="inputs-empresa flex flex-collumn">
                                     <label>Numero de Funcionários</label>
                                     <input type="text" name='numeroDeFuncionarios' value={this.state.numeroDeFuncionarios} onChange={this.atualizaStateCampo}/>
                                 </div>
-                                <div className="inputs-empresa flex flex-collumn ai-center">
+                                <div className="inputs-empresa flex flex-collumn">
                                     <label>Numero de Telefone</label>
-                                    <input type="number" name='numeroDeTelefone' value={this.state.numeroDeTelefone} onChange={this.atualizaStateCampo}/>
+                                    <input type="text" name='numeroDeTelefone' value={this.state.numeroDeTelefone} onChange={this.atualizaStateCampo}/>
                                 </div>
-                                <div className="inputs-empresa flex flex-collumn ai-center">
+                                <div className="inputs-empresa flex flex-collumn">
                                     <label>Email da Empresa</label>
                                     <input type="text" name='emailEmpresa' value={this.state.emailEmpresa} onChange={this.atualizaStateCampo}/>
                                 </div>
-                                <div className="inputs-empresa flex flex-collumn ai-center">
+                                <div className="inputs-empresa flex flex-collumn">
                                     <label>Nome Fantasia</label>
                                     <input type="text" name='nomeFantasia' value={this.state.nomeFantasia} onChange={this.atualizaStateCampo}/>
                                 </div>
-                                <div className="inputs-empresa flex flex-collumn ai-center">
+                                <div className="inputs-empresa flex flex-collumn">
                                     <label>Cnpj</label>
                                     <input type="text" name='cnpj' value={this.state.cnpj} onChange={this.atualizaStateCampo}/>
                                 </div>
-                                <div className="inputs-empresa flex flex-collumn ai-center">
+                                <div className="inputs-empresa flex flex-collumn">
                                     <label>Segmento de Mercado</label>
                                     <input type="text" name='segmentoDeMercado' value={this.state.segmentoDeMercado} onChange={this.atualizaStateCampo}/>
                                 </div>
-                                <div className="empresa-btn flex ai-center ai-flex-end">
-                                    <button type="submit" className="btn-cadastro-empresa flex ai-center jc-center"><i id="cadastrinho" className="fas fa-user-plus"></i>Cadastrar</button>
+                                <div className="empresa-btn flex ai-center">
+                                    <button type="submit" className="btn-cadastro-empresa flex ai-center jc-center"><i id="icon-empresa-cadastro" class="fas fa-store"></i>Cadastrar</button>
                                 </div>
                             </form>
                         </div>

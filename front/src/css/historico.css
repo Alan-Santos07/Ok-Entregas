@@ -128,6 +128,18 @@ h2{
     display: none;
     background-color: #14262b86;
 }
+.modal-card-historico{
+    width: 100vw;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 8;
+
+    display: none;
+    background-color: #14262b86;
+}
 
 .modal-card-content{
     width: 700px;
@@ -137,6 +149,24 @@ h2{
     border: 3px solid rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     border-radius: 30px;
+}
+
+.modal-card-content-historico{
+    width: 700px;
+    height: 650px;
+
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+}
+
+#icon-history-cadastrar{
+    color: #F9BD72;
+    padding-top: 4px;
+    padding-left: 1.5px;
+    padding-right: 4px;
+    margin-right: 3px;
 }
 
 .mostrar{

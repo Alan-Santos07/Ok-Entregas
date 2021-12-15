@@ -1,4 +1,54 @@
+.empresa-content{
+    width: 60vw;
+    height: 100vh;
+    padding-left: 20px;
+}
+
 .inputs-empresa-content{
-    width: 57vw;
-    margin-top: 20px;
+    width: 100%;
+    margin-top: 30px;
+    height: 100%;
+}
+
+.form-empresa{
+    padding-left: 20px;
+    height: 60%;
+}
+
+.inputs-empresa label{
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.inputs-empresa input{
+    width: 380px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #F3FEF5;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.btn-cadastro-empresa{
+    width: 380px;
+    height: 60px;
+    margin-bottom: 40px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+#icon-empresa-cadastro{
+    font-size: 28px;
+    padding-right: 20px;
+    color: #7534F8;
 }
