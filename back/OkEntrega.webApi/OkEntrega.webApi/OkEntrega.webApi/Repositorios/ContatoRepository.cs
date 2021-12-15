@@ -101,5 +101,10 @@ namespace OkEntrega.webApi.Repositorios
             return ctx.Contatos.Include(e => e.IdEmpresaNavigation).Include(e => e.IdLeadsNavigation).OrderByDescending(d => d.DataCriacao)
             .ToList();
         }
+
+        public List<Contato> ListarContatosFavoritos()
+        {
+            return ctx.Contatos.Include(e => e.IdEmpresaNavigation).Include(e => e.IdLeadsNavigation).OrderByDescending(d => d.DataCriacao).Where(x => x.Favoritar == true).ToList();
+        }
     }
 }

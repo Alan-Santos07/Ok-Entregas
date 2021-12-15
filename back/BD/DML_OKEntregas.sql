@@ -22,7 +22,7 @@ VALUES                  ('Ativo','José','Jose@gmmail.com','Administrador', 'Medi
 						('Ativo','Pelé','Pele@gmmail.com','Recepcionista', 'Baixo','11971697877',  'Controle de monitoriamento', 3)
 
 INSERT INTO Contato	(IdEmpresa, IdLeads, Titulo, Descricao, DataCriacao, Favoritar)
-VALUES                  (1,1,'Andre still','Dono da still', '2008-11-11 13:23:44' , 0) 
+VALUES                  (1,1,'Andre still','Dono da still', '2008-11-11 13:23:44' , 1) 
 					
 
 							

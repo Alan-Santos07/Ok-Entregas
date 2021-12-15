@@ -15,6 +15,12 @@ namespace OkEntrega.webApi.Interfaces
         List<Contato> Listar();
 
         /// <summary>
+        /// Usuarios de usuarios listados Favoritados
+        /// </summary>
+        /// <returns>uma lista de usuarios favoritados</returns>
+        List<Contato> ListarContatosFavoritos();
+
+        /// <summary>
         /// Busca um usuário através do ID
         /// </summary>
         Contato BuscarPorId(int id);

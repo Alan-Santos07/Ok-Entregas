@@ -37,6 +37,20 @@ namespace OkEntrega.webApi.Controllers
             }
         }
 
+        [HttpGet("ListarFavoritos")]
+        public IActionResult GetFavoritos()
+        {
+            try
+            {
+                return Ok(contatoRepository.ListarContatosFavoritos());
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro);
+            }
+        }
+
         [HttpGet("{id}")]
         public IActionResult GetId(int id)
         {
