@@ -206,7 +206,8 @@ export default class Historico extends Component{
                                                         <td>{contato.idEmpresaNavigation.nomeEmpresa}</td>
                                                         <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(contato.dataCriacao))}</td>
                                                         <td>
-                                                            <button className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button>
+                                                            <button type="submit" onClick={() => this.excluirContato(contato)}className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button>
+                                                            {/* <button className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button> */}
                                                             <button className="btn-favoritar-historico"><i id="star" className="fas fa-star"></i>Favoritar</button>
                                                         </td>
                                                     </tr>

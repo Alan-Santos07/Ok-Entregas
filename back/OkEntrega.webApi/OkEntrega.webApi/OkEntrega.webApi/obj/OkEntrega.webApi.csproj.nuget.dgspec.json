@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Trabalho\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj": {}
+    "C:\\Users\\Daniel\\Desktop\\Proj\\0855\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj": {}
   },
   "projects": {
-    "D:\\Trabalho\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj": {
+    "C:\\Users\\Daniel\\Desktop\\Proj\\0855\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Trabalho\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
+        "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Proj\\0855\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
         "projectName": "OkEntrega.webApi",
-        "projectPath": "D:\\Trabalho\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
-        "packagesPath": "C:\\Users\\alanc\\.nuget\\packages\\",
-        "outputPath": "D:\\Trabalho\\Ok-Entregas\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\obj\\",
+        "projectPath": "C:\\Users\\Daniel\\Desktop\\Proj\\0855\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi.csproj",
+        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Daniel\\Desktop\\Proj\\0855\\Ok-Entregas\\back\\OkEntrega.webApi\\OkEntrega.webApi\\OkEntrega.webApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alanc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

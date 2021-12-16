@@ -124,7 +124,9 @@ export default class Leads extends Component{
                                                     <td>{lead.score}</td>
                                                     <td>{lead.cargo}</td>
                                                     <td>{lead.telefone}</td>
-                                                    <td><button className="btn-leads"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button></td>
+                                                    
+                                                    <td><button type="submit" onClick={() => this.excluirLead(lead)}className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button></td>
+                                                    {/* <td><button className="btn-leads"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button></td> */}
                                                 </tr>
                                             </tbody>
                                         )
