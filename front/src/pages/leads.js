@@ -97,65 +97,10 @@ export default class Leads extends Component{
                 <section className="content">
                     <div className="glass-home flex flex-collumn ai-flex-start jc-flex-start">
                         <h1>LEADS</h1>
-                        <div className="card-area flex ai-flex-start">
-                        <button onClick={this.abreModalLd} type='button' className="btn-pesquisar flex ai-center jc-center">Novo Historico</button>
+                        <div className="card-area flex ai-flex-start flex-collumn">
+                            <button onClick={this.abreModalLd} type='button' className="btn-cadastrar-lead flex ai-center jc-center">Novo Lead</button>
 
-                        <section className="modal-card flex ai-center jc-center " id="modal-card-lead">
-                    <div className="modal-card-content">
-                    <div className='inputs-empresa-content'>
-                            <form className='form-empresa flex flex-wrap jc-space-btw' onSubmit={this.cadastrarLeads}>
-                                <div className="inputs-empresa flex flex-collumn"> 
-                                <label>Status do Lead</label>
-                                    <input type="text" name='statusLead' value={this.state.statusLead} onChange={this.atualizaStateCampo}/>
-                                </div>
-                                <div className="inputs-empresa flex flex-collumn">
-                                    <label>Nome</label>
-                                    <input type="text" name='nome' value={this.state.nome} onChange={this.atualizaStateCampo}/>
-                                </div>
-                                <div className="inputs-empresa flex flex-collumn">
-                                    <label>Email</label>
-                                    <input type="text" name='email' value={this.state.email} onChange={this.atualizaStateCampo}/>
-                                </div>
-                                <div className="inputs-empresa flex flex-collumn">
-                                    <label>Cargo do Lead</label>
-                                    <input type="text" name='cargo' value={this.state.cargo} onChange={this.atualizaStateCampo}/>
-                                </div>
-                                <div className="inputs-empresa flex flex-collumn">
-                                    <label>Score</label>
-                                    <input type="text" name='score' value={this.state.score} onChange={this.atualizaStateCampo}/>
-                                </div>
-                                <div className="inputs-empresa flex flex-collumn">
-                                    <label>Telefone</label>
-                                    <input type="text" name='telefone' value={this.state.telefone} onChange={this.atualizaStateCampo}/>
-                                </div>
-                                <div className="inputs-empresa flex flex-collumn">
-                                    <label>Necessidades</label>
-                                    <input type="text" name='necessidades' value={this.state.necessidades} onChange={this.atualizaStateCampo}/>
-                                </div>
-                                
-                                <select 
-                                className="select-Lead"
-                                name="idEmpresa" 
-                                value={this.state.idEmpresa} 
-                                onChange={this.atualizaStateCampo}>
-                                    <option value="0"> Selecione uma Empresa </option>
-                                    {
-                                        this.state.listaLeads.map(tipo => {
-                                            return(
-                                                <option key={tipo.idEmpresa} value={tipo.idEmpresa}>
-                                                    {tipo.idEmpresaNavigation.nomeEmpresa}
-                                                </option>
-                                            );
-                                        })
-                                    }
-                                </select>
-                                <div className="empresa-btn flex ai-center">
-                                    <button type="submit" className="btn-cadastro-empresa flex ai-center jc-center"><i id="icon-empresa-cadastro" class="fas fa-store"></i>Cadastrar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </section>
+                        
                             <div className="card-content-leads flex flex-row flex-wrap jc-space-btw">
                                 <table className="tabela-leads">
                                     <thead>
@@ -186,6 +131,62 @@ export default class Leads extends Component{
                                     })}
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="modal-card flex ai-center jc-center " id="modal-card-lead">
+                    <div className="modal-card-content-lead">
+                        <div className='inputs-empresa-content'>
+                            <h1 className='titulo-lead'>Cadastrar novo Lead</h1>
+                            <form className='form-lead flex flex-wrap jc-space-eve' onSubmit={this.cadastrarLeads}>
+                                <div className="inputs-empresa flex flex-collumn"> 
+                                    <label>Status do Lead</label>
+                                    <input type="text" name='statusLead' value={this.state.statusLead} onChange={this.atualizaStateCampo}/>
+                                </div>
+                                <div className="inputs-empresa flex flex-collumn">
+                                    <label>Nome</label>
+                                    <input type="text" name='nome' value={this.state.nome} onChange={this.atualizaStateCampo}/>
+                                </div>
+                                <div className="inputs-empresa flex flex-collumn">
+                                    <label>Email</label>
+                                    <input type="text" name='email' value={this.state.email} onChange={this.atualizaStateCampo}/>
+                                </div>
+                                <div className="inputs-empresa flex flex-collumn">
+                                    <label>Cargo do Lead</label>
+                                    <input type="text" name='cargo' value={this.state.cargo} onChange={this.atualizaStateCampo}/>
+                                </div>
+                                <div className="inputs-empresa flex flex-collumn">
+                                    <label>Score</label>
+                                    <input type="text" name='score' value={this.state.score} onChange={this.atualizaStateCampo}/>
+                                </div>
+                                <div className="inputs-empresa flex flex-collumn">
+                                    <label>Telefone</label>
+                                    <input type="text" name='telefone' value={this.state.telefone} onChange={this.atualizaStateCampo}/>
+                                </div>
+                                <div className="inputs-empresa flex flex-collumn">
+                                    <label>Necessidades</label>
+                                    <input type="text" name='necessidades' value={this.state.necessidades} onChange={this.atualizaStateCampo}/>
+                                </div>
+                                <select 
+                                    className="select-Lead"
+                                    name="idEmpresa" 
+                                    value={this.state.idEmpresa} 
+                                    onChange={this.atualizaStateCampo}>
+                                        <option value="0"> Selecione uma Empresa </option>
+                                        {
+                                            this.state.listaLeads.map(tipo => {
+                                                return(
+                                                    <option key={tipo.idEmpresa} value={tipo.idEmpresa}>
+                                                        {tipo.idEmpresaNavigation.nomeEmpresa}
+                                                    </option>
+                                                );
+                                            })
+                                        }
+                                </select>
+                                <div className="empresa-btn flex ai-center">
+                                    <button type="submit" className="btn-cadastrar-new-lead flex ai-center jc-center"><i id="icon-leads-cadastro" class="fas fa-street-view"></i>Cadastrar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </section>

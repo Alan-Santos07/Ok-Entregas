@@ -14,6 +14,8 @@ export default class Historico extends Component{
             listaEmpresa: [],
             listaLead: [],
             perfilContato: "",
+            nomeEmpresa: '',
+            descricao: '',
             idContatoSelecionado : 0,
         }
     }
@@ -72,7 +74,7 @@ export default class Historico extends Component{
         await axios("http://localhost:5000/api/Contatos/" + id)
         .then(resposta => {
             if (resposta.status === 200) {
-                this.setState({ perfilContato: resposta.data.titulo})
+                this.setState({ perfilContato: resposta.data.titulo, descricao: resposta.data.descricao})
                 console.log("puxou o id")
             }
             console.log(this.state.perfilContato)
@@ -238,7 +240,7 @@ export default class Historico extends Component{
                             <div className="IdEmpresa flex flex-collumn ai-center">
                                 <label>Escolha uma Empresa</label>
                                 <select 
-                                className="select-historico"
+                                className="select-lead"
                                 name="IdEmpresa" 
                                 value={this.state.IdEmpresa} 
                                 onChange={this.atualizaStateCampo}>
@@ -258,7 +260,7 @@ export default class Historico extends Component{
                             <div className="input-select flex flex-collumn ai-center">
                                 <label>Escolha um Lead</label>
                                 <select 
-                                className="select-Lead"
+                                className="select-lead"
                                 name="IdLead" 
                                 value={this.state.IdLead} 
                                 onChange={this.atualizaStateCampo}>
@@ -274,21 +276,22 @@ export default class Historico extends Component{
                                     }
                                 </select>
                             </div>           
-                                <div className="flex ai-center ai-flex-end">
-                                    <button type="submit" className="btn-cadastro flex ai-center jc-center"><i id="icon-history-cadastrar" className="fas fa-history"></i>Cadastrar</button>
-                                </div>
-                    </form>
+                            <div className="flex ai-center ai-flex-end">
+                                <button type="submit" className="btn-cadastro flex ai-center jc-center"><i id="icon-history-cadastrar" className="fas fa-history"></i>Cadastrar</button>
+                            </div>
+                        </form>
                     </div>
                 </section>
                                
                 <section className="modal-card flex ai-center jc-center " id="modal-card">
-                    <div className="modal-card-content">
-                        <h1>Oieee</h1>
-                                <div className="">
-                                    <div className="">
-                                        <p>{this.state.perfilContato}</p>
-                                    </div>
-                                </div>
+                    <div className="modal-card-content flex flex-collumn ai-center">
+                        <h1>{this.state.perfilContato}</h1>
+                        <div className="info-modal-historico">
+                            <div className="historico-descricao-modal flex flex-collumn ai-center">
+                                {/* <p>{this.state.nomeEmpresa}</p> */}
+                                <p>{this.state.descricao}</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <div className="bc1"></div>

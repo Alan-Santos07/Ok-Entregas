@@ -135,7 +135,7 @@ h2{
     top: 0;
     left: 0;
     position: absolute;
-    z-index: 8;
+    z-index: 99;
 
     display: none;
     background-color: #14262b86;
@@ -149,6 +149,7 @@ h2{
     border: 3px solid rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     border-radius: 30px;
+    padding-top: 30px;
 }
 
 .modal-card-content-historico{
@@ -198,4 +199,10 @@ h2{
     font-weight: 600;
     border-radius: 30px;
     cursor: pointer;
+}
+
+.select-lead{
+    width: 300px;
+    height: 40px;
+    outline: none;
 }
