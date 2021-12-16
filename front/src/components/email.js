@@ -26,7 +26,7 @@ function Email() {
 
             axios.post("https://easymail.p.rapidapi.com/send", EmailBody, {
             headers:{
-                'X-RapidAPI-Host': 'easymail.p.rapidapi.com',
+                'X-RapidAPI-Host': '    ',
                 'X-RapidAPI-Key': '56519e1a91msh35cec7200c6bc6ep1928fbjsnd6c4051505c8'
             }
            })

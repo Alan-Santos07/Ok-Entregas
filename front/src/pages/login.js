@@ -33,7 +33,7 @@ efetuaLogin =(event) =>{
         axios.post('http://localhost:5000/api/login', {
         email: this.state.email,
         senha: this.state.senha
-    })
+    }, 1000)
 
     .then(resposta => {
         if(resposta.status ===200){

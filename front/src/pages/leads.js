@@ -10,6 +10,8 @@ export default class Leads extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            listaEmpresas: [],
+            IdEmpresa: 2,
             listaLeads: [],
             statusLead: "",
             nome: "",
@@ -18,7 +20,6 @@ export default class Leads extends Component{
             score: "",
             telefone: "",
             necessidades: "",
-            idEmpresa: 0
         }
     }
     cadastrarLeads = (event) => {
@@ -26,13 +27,13 @@ export default class Leads extends Component{
 
         let lead = {
             statusLead : this.state.statusLead,
-            nome : this.state.nome,
-            email : this.state.email,
-            cargo : this.state.cargo,
-            score : this.state.score,
-            telefone : this.state.telefone,
-            necessidades : this.state.necessidades,
-            idEmpresa : this.state.idEmpresa
+            Nome : this.state.nome,
+            Email : this.state.email,
+            Cargo : this.state.cargo,
+            Score : this.state.score,
+            Telefone : this.state.telefone,
+            Necessidades : this.state.necessidades,
+            IdEmpresa : this.state.IdEmpresa
             
         };
         axios.post("http://localhost:5000/api/leads", lead)
@@ -42,12 +43,14 @@ export default class Leads extends Component{
                 const modal = document.getElementById('modal')
                  modal.classList.remove('mostrar')          
             }
+            this.buscaLeads();
         })
 
         .catch(erro => {
             console.log(erro);
         })
     }
+
     buscaLeads = () => {
         axios("http://localhost:5000/api/Leads")
         .then(resposta => {
@@ -59,6 +62,20 @@ export default class Leads extends Component{
         })
         .catch(erro => console.log(erro));
     }
+
+  
+    buscaEmpresas = () => {
+        axios("http://localhost:5000/api/Empresas")
+        .then(resposta => {
+            if (resposta.status === 200) {
+                this.setState({ listaEmpresas: resposta.data})
+
+            }
+            console.log(this.state.listaEmpresas)
+        })
+        .catch(erro => console.log(erro));
+    }
+
     atualizaStateCampo = (campo) => {
         this.setState({[campo.target.name]: campo.target.value})
       }
@@ -87,6 +104,7 @@ export default class Leads extends Component{
         }
     componentDidMount(){
         this.buscaLeads();
+        this.buscaEmpresas();
     }
 
     render() {
@@ -176,14 +194,14 @@ export default class Leads extends Component{
                                     onChange={this.atualizaStateCampo}>
                                         <option value="0"> Selecione uma Empresa </option>
                                         {
-                                            this.state.listaLeads.map(tipo => {
+                                            this.state.listaEmpresas.map(tipo => {
                                                 return(
-                                                    <option key={tipo.idEmpresa} value={tipo.idEmpresa}>
-                                                        {tipo.idEmpresaNavigation.nomeEmpresa}
-                                                    </option>
+                                                    <option key={tipo.IdEmpresa} value={tipo.idEmpresa}>
+                                                    {tipo.nomeEmpresa}
+                                                </option>
                                                 );
                                             })
-                                        }
+                                        }   
                                 </select>
                                 <div className="empresa-btn flex ai-center">
                                     <button type="submit" className="btn-cadastrar-new-lead flex ai-center jc-center"><i id="icon-leads-cadastro" class="fas fa-street-view"></i>Cadastrar</button>

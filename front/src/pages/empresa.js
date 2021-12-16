@@ -5,6 +5,8 @@ import '../css/base-style.css'
 import Side from '../components/side-bar'
 import Email from '../components/email'
 import axios from 'axios';
+import Loading from '../components/Loading';
+
 
 import '../css/empresa.css'
 
@@ -20,12 +22,16 @@ export default class Empresa extends Component{
             emailEmpresa: '',
             nomeFantasia: '',
             cnpj: '',
-            segmentoDeMercado: ''
+            segmentoDeMercado: '',
+            isLoading: false,
+
         }
     }
 
     cadastrarEmpresa = (event) => {
         event.preventDefault();
+
+
 
         let empresa = {
             nomeEmpresa : this.state.nomeEmpresa,
@@ -36,16 +42,23 @@ export default class Empresa extends Component{
             cnpj : this.state.cnpj,
             segmentoDeMercado : this.state.segmentoDeMercado
         };
-        axios.post("http://localhost:5000/api/empresas", empresa)
-        .then(resposta => {
-            if(resposta.status === 201){
-                console.log('aeejduejdueidj')
-            }
-        })
 
-        .catch(erro => {
-            console.log(erro);
-        })
+        this.setState({isLoading: true})
+
+        setTimeout(() => {
+            axios.post("http://localhost:5000/api/empresas", empresa)           
+            .then(resposta => {
+                if(resposta.status === 201){
+                    console.log('Foi')               
+                }
+                
+                this.setState({nomeEmpresa : '', numeroDeFuncionarios : 0, emailEmpresa : '', numeroDeTelefone : 0, nomeFantasia : '', cnpj : '', segmentoDeMercado: '', isLoading : false})
+            })
+            .catch(erro => {
+                console.log(erro);
+            })      
+        }, 3000)     
+       
 
     }
 
@@ -95,8 +108,15 @@ export default class Empresa extends Component{
                                     <label>Segmento de Mercado</label>
                                     <input type="text" name='segmentoDeMercado' value={this.state.segmentoDeMercado} onChange={this.atualizaStateCampo}/>
                                 </div>
-                                <div className="empresa-btn flex ai-center">
-                                    <button type="submit" className="btn-cadastro-empresa flex ai-center jc-center"><i id="icon-empresa-cadastro" class="fas fa-store"></i>Cadastrar</button>
+                                <div className="empresa-btn flex ai-center">                             
+                                    {
+                                        this.state.isLoading === true && 
+                                        <Loading />
+                                    }
+                                    {
+                                        this.state.isLoading === false && 
+                                        <button type="submit" className="btn-cadastro-empresa flex ai-center jc-center"><i id="icon-empresa-cadastro" class="fas fa-store"></i>Cadastrar</button>
+                                    }
                                 </div>
                             </form>
                         </div>

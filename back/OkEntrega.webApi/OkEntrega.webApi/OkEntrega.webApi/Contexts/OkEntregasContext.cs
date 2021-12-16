@@ -34,7 +34,8 @@ namespace OkEntrega.webApi.Contexts
                 //optionsBuilder.UseSqlServer("Data Source=DESKTOP-42FT3LN\\SQLEXPRESS;initial catalog=OKEntregas;user Id=joao; pwd=1234j");
                 //optionsBuilder.UseSqlServer("Data Source=DESKTOP-M7IPJ7L\\SQLEXPRESS;initial catalog= OKEntregas;user Id=sa; pwd=Senai@132");
                 //optionsBuilder.UseSqlServer("Data Source=DESKTOP-NQMUPH6\\SQLEXPRESS;initial catalog= OKEntregas;user Id=sa; pwd=senai@132");
-                optionsBuilder.UseSqlServer("Data Source=database.cmudjo7ttpbr.us-east-1.rds.amazonaws.com; initial catalog= OKEntregas;user Id=giovanna; pwd=Senai132");
+                //optionsBuilder.UseSqlServer("Data Source=database.cmudjo7ttpbr.us-east-1.rds.amazonaws.com; initial catalog= OKEntregas;user Id=giovanna; pwd=Senai132");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-0SC142P; initial catalog= OKEntregas;user Id=sa; pwd=Jas1973@@a");
             }
         }
 

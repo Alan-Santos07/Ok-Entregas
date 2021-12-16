@@ -111,6 +111,7 @@ export default class Historico extends Component{
                             modal.classList.remove('mostrar')          
                             this.setState({ erroMensagem:'', isLoading: false})
                         }
+                        this.buscaContatos();
                     })
                     .catch(erro => {
                         console.log(erro);
