@@ -11,7 +11,7 @@ export default class Leads extends Component{
         super(props);
         this.state = {
             listaEmpresas: [],
-            IdEmpresa: 2,
+            IdEmpresaa: '',
             listaLeads: [],
             statusLead: "",
             nome: "",
@@ -26,6 +26,8 @@ export default class Leads extends Component{
         event.preventDefault();
 
         let lead = {
+
+            
             statusLead : this.state.statusLead,
             Nome : this.state.nome,
             Email : this.state.email,
@@ -33,7 +35,7 @@ export default class Leads extends Component{
             Score : this.state.score,
             Telefone : this.state.telefone,
             Necessidades : this.state.necessidades,
-            IdEmpresa : this.state.IdEmpresa
+            IdEmpresa : this.state.IdEmpresaa
             
         };
         axios.post("http://localhost:5000/api/leads", lead)
@@ -82,7 +84,7 @@ export default class Leads extends Component{
     excluirLead = async (id) => {
      
 
-        await axios.delete('http://localhost:5000/api/leads/'+id)
+        await axios.delete('http://localhost:5000/api/leads/'+ id)
         .then(resposta =>{
             if (resposta.status === 204) {
                 console.log(id)
@@ -102,6 +104,14 @@ export default class Leads extends Component{
                 }
             })
         }
+
+        onChangeHandler = (e) => {
+            this.setState({ IdEmpresaa : e.target.value})
+            console.log(this.state.IdEmpresaa)
+          }
+
+          
+          
     componentDidMount(){
         this.buscaLeads();
         this.buscaEmpresas();
@@ -143,7 +153,7 @@ export default class Leads extends Component{
                                                     <td>{lead.cargo}</td>
                                                     <td>{lead.telefone}</td>
                                                     
-                                                    <td><button type="submit" onClick={() => this.excluirLead(lead)}className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button></td>
+                                                    <td><button type="submit" onClick={() => this.excluirLead(lead.idLeads)}className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button></td>
                                                     {/* <td><button className="btn-leads"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button></td> */}
                                                 </tr>
                                             </tbody>
@@ -191,12 +201,12 @@ export default class Leads extends Component{
                                     className="select-Lead"
                                     name="idEmpresa" 
                                     value={this.state.idEmpresa} 
-                                    onChange={this.atualizaStateCampo}>
+                                    onChange={this.onChangeHandler}>
                                         <option value="0"> Selecione uma Empresa </option>
                                         {
                                             this.state.listaEmpresas.map(tipo => {
                                                 return(
-                                                    <option key={tipo.IdEmpresa} value={tipo.idEmpresa}>
+                                                    <option key={tipo.IdEmpresa} value={tipo.idEmpresa} id={tipo.idEmpresa}>
                                                     {tipo.nomeEmpresa}
                                                 </option>
                                                 );

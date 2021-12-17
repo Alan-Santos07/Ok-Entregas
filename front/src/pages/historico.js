@@ -17,8 +17,36 @@ export default class Historico extends Component{
             nomeEmpresa: '',
             descricao: '',
             idContatoSelecionado : 0,
+            Fav : false,
+            listaFav : []
+            
         }
     }
+
+    Mudarfav = () => {
+        this.setState({Fav : !this.state.Fav})
+
+        if(this.state.Fav === true){
+            console.log("true")
+        }
+        else if(this.state.Fav === false){
+            console.log("false")
+        }
+    }
+
+
+    buscaContatosFav = () => {
+        axios("http://localhost:5000/api/Contatos/ListarFavoritos")
+        .then(resposta => {
+            if (resposta.status === 200) {
+                this.setState({ listaFav: resposta.data})
+
+            }
+            console.log(this.state.listaFav)
+        })
+        .catch(erro => console.log(erro));
+    }
+
 
     buscaContatos = () => {
         axios("http://localhost:5000/api/Contatos")
@@ -146,6 +174,7 @@ export default class Historico extends Component{
                 this.buscaContatos();
                 this.buscaEmpresa();
                 this.buscaLead();
+                this.buscaContatosFav();
             }
 
     render() {
@@ -179,7 +208,7 @@ export default class Historico extends Component{
                             <p>Ordenar por :</p>
                             <div className="ordenar flex ai-center jc-space-btw">
                                 <div className="order flex ai-center">
-                                    <button className="flex ai-center jc-center"><i id="star" className="fas fa-star"></i>Ver Favoritos</button>
+                                    <button className="flex ai-center jc-center"><i id="star" className="fas fa-star" onClick={ this.Mudarfav}></i>Ver Favoritos</button>
                                 </div>
                                 <div className="order flex ai-center">
                                     <button className="flex ai-center jc-center"><i id="old" className="fas fa-arrow-left"></i>Mais Antigo</button>
@@ -199,22 +228,47 @@ export default class Historico extends Component{
                                                 <th>Ações</th>
                                             </tr>
                                         </thead>
-                                        {this.state.listaContatos.map((contato) => {
-                                            return(
-                                                <tbody className="tabela-body">
-                                                    <tr onClick={()=> {this.buscarId(contato.idContato)}} key={contato.idContato}>
-                                                        <td>{contato.titulo}</td>
-                                                        <td>{contato.idEmpresaNavigation.nomeEmpresa}</td>
-                                                        <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(contato.dataCriacao))}</td>
-                                                        <td>
-                                                            <button type="submit" onClick={() => this.excluirContato(contato)}className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button>
-                                                            {/* <button className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button> */}
-                                                            <button className="btn-favoritar-historico"><i id="star" className="fas fa-star"></i>Favoritar</button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            )
-                                        })}
+
+                                        {
+                                            this.state.Fav === true && 
+                                            this.state.listaFav.map((contato) => {
+                                                return(
+                                                    <tbody className="tabela-body">
+                                                        <tr  key={contato.idContato}>
+                                                            <td>{contato.titulo}</td>
+                                                            <td>{contato.idEmpresaNavigation.nomeEmpresa}</td>
+                                                            <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(contato.dataCriacao))}</td>
+                                                            <td>
+                                                                <button type="submit" onClick={() => this.excluirContato(contato)}className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button>
+                                                                {/* <button className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button> */}
+                                                                <button className="btn-favoritar-historico"><i id="star" className="fas fa-star"></i>Favoritar</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                )
+                                            })
+                                        }
+
+                                        {
+                                            this.state.Fav === false && 
+                                            this.state.listaContatos.map((contato) => {
+                                                return(
+                                                    <tbody className="tabela-body">
+                                                        <tr  key={contato.idContato}>
+                                                            <td>{contato.titulo}</td>
+                                                            <td>{contato.idEmpresaNavigation.nomeEmpresa}</td>
+                                                            <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(contato.dataCriacao))}</td>
+                                                            <td>
+                                                                <button type="submit" onClick={() => this.excluirContato(contato)}className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button>
+                                                                {/* <button className="btn-deletar-historico"><i id="lixinho-leads" class="fas fa-trash-alt"></i>Excluir</button> */}
+                                                                <button className="btn-favoritar-historico"><i id="star" className="fas fa-star"></i>Favoritar</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                )
+                                            })
+                                        }
+                                      
                                     </table>
                                 </div>
                             </div>
